@@ -1,6 +1,6 @@
 ## Fetch
 
-Suckless style fetcher. Feel free to modify.
+Suckless style alternative to neofetch. Feel free to modify.
 
 ![image](image.png)
 
