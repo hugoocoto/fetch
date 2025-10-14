@@ -4,8 +4,9 @@
 #define KERNEL "cat /proc/version | cut -d' ' -f1,3"
 #define CPU "grep 'model name' /proc/cpuinfo | uniq | awk -F: '{print $2}' | sed 's/^ *//'"
 #define GPU "lspci | grep -i vga | awk -F: '{print $3}' | cut -d' ' -f 2,4-8"
+#define COLORS "for C in {30..37}; do echo -en \"[${C}m${C} \"; done; echo;"
 
-const char *show[][2] = {
+const char *const show[][2] = {
         { "host", "echo ${USER}@$(hostname)" },
         { "kernel", KERNEL },
         { "distro", DISTRO },
@@ -19,4 +20,14 @@ const char *show[][2] = {
         { "gpu", GPU },
         { "model", "cat /sys/class/dmi/id/product_name" },
         { "vendor", "cat /sys/class/dmi/id/sys_vendor" },
+        { "colors", COLORS },
 };
+
+#define BLUE "\033[34m"
+#define GREEN "\033[32m"
+#define RESET "\033[0m"
+#define BOLD "\033[1m"
+
+const int label_min_width = 9;
+const char *const lthing = "| " BOLD;
+const char *const sep = GREEN "> " RESET;

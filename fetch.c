@@ -15,7 +15,9 @@ main()
                 const char *name = show[i][0];
                 const char *cmd = show[i][1];
                 FILE *f = popen(cmd, "r");
-                printf("%s: %s", name, fgets((char[1024]) {}, 1024, f));
+                printf("%s", lthing);
+                printf("%-*s", label_min_width, name);
+                printf("%s%s", sep, fgets((char[1024]) {}, 1024, f));
                 fclose(f);
         }
 }
