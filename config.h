@@ -5,7 +5,7 @@
 #define CPU "grep 'model name' /proc/cpuinfo | uniq | awk -F: '{print $2}' | sed 's/^ *//'"
 #define GPU "lspci | grep -i vga | awk -F: '{print $3}' | cut -d' ' -f 2,4-8"
 #define COLORS "for C in {40..47}; do echo -en \"[${C}m  \"; done; echo -e \"[0m\";"
-#define TERM "ps -aux | grep -e \" 1836 \" | head -1 | sed \"s/  */ /g\" | cut -d' ' -f11"
+#define TERM "echo $TERM | cut -d '-' -f1"
 
 #define BLACK "\033[30m"
 #define RED "\033[31m"
