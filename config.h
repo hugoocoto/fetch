@@ -22,17 +22,18 @@
 #include "concat.h"
 
 const int name_min_width = 9;
-const int resp_min_width = 41;
+const int resp_min_width = 51;
 const char *const sep = GREEN " >  " RESET;
-const char *const tthing = "┏" concat55("━") "┓";
+const char *const tthing = "┏" concat65("━") "┓";
 const char *const lthing = "┃ " BOLD;
 const char *const rthing = "┃";
-const char *const bthing = "┗" concat55("━") "┛";
+const char *const bthing = "┗" concat65("━") "┛";
 
 const char *const show[][3] = {
         { "host", "echo ${USER}@$(hostname)" },
         { "kernel", KERNEL },
         { "distro", DISTRO },
+        { "uptime", UPTIME },
         // { "de", "echo $XDG_CURRENT_DESKTOP" },
         { "wm", "echo $XDG_CURRENT_DESKTOP" },
         { "packages", PACKAGES },
@@ -41,8 +42,8 @@ const char *const show[][3] = {
         { "uptime", UPTIME },
         { "cpu", CPU },
         { "gpu", GPU },
-        // { "model", "cat /sys/class/dmi/id/product_name" },
-        // { "vendor", "cat /sys/class/dmi/id/sys_vendor" },
+        { "model", "cat /sys/class/dmi/id/product_name" },
+        { "vendor", "cat /sys/class/dmi/id/sys_vendor" },
         /* The third argument is the amount of chars that should not be count */
         { "colors", COLORS, (char *) ((strlen("[XXm") * 8) + strlen("[0m")) },
 };
