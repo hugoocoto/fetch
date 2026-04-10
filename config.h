@@ -4,7 +4,7 @@
 #define KERNEL "cat /proc/version | cut -d' ' -f1,3"
 #define CPU "grep 'model name' /proc/cpuinfo | uniq | awk -F: '{print $2}' | sed 's/^ *//'"
 #define GPU "lspci | grep -i vga | awk -F: '{print $3}' | cut -d' ' -f 2,4-8"
-#define COLORS "for C in {40..47}; do echo -en \"[${C}m  \"; done; echo -e \"[0m\";"
+#define COLORS "for C in {40..47}; do echo -en \"\033[${C}m  \"; done; echo -e \"\033[0m\";"
 #define TERM "echo $TERM | cut -d '-' -f1"
 
 #define BLACK "\033[30m"
@@ -45,5 +45,5 @@ const char *const show[][3] = {
         { "model", "cat /sys/class/dmi/id/product_name" },
         { "vendor", "cat /sys/class/dmi/id/sys_vendor" },
         /* The third argument is the amount of chars that should not be count */
-        { "colors", COLORS, (char *) ((strlen("[XXm") * 8) + strlen("[0m")) },
+        { "colors", COLORS, (char *) ((strlen("\033[XXm") * 8) + strlen("\033[0m")) },
 };
