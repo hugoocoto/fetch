@@ -4,7 +4,6 @@
 
 #include "config.h"
 
-
 int
 main()
 {
@@ -36,3 +35,4 @@ main()
         }
         if (bthing) printf("%s\n", bthing);
 }
+

@@ -6,6 +6,7 @@
 #define GPU "lspci | grep -i vga | awk -F: '{print $3}' | cut -d' ' -f 2,4-8"
 #define COLORS "for C in {40..47}; do echo -en \"\033[${C}m  \"; done; echo -e \"\033[0m\";"
 #define TERM "echo $TERM | cut -d '-' -f1"
+#define DISK "df -h --total / | awk '/total/ {print \"\" $3 \"/\" $2 \" (\"$5\")\"}'"
 
 #define BLACK "\033[30m"
 #define RED "\033[31m"
@@ -24,22 +25,22 @@
 const int name_min_width = 9;
 const int resp_min_width = 51;
 const char *const sep = GREEN " >  " RESET;
-const char *const tthing = "┏" concat65("━") "┓";
-const char *const lthing = "┃ " BOLD;
+const char *const tthing = " ┏" concat65("━") "┓";
+const char *const lthing = " ┃ " BOLD;
 const char *const rthing = "┃";
-const char *const bthing = "┗" concat65("━") "┛";
+const char *const bthing = " ┗" concat65("━") "┛";
 
 const char *const show[][3] = {
         { "host", "echo ${USER}@$(hostname)" },
         { "kernel", KERNEL },
         { "distro", DISTRO },
         { "uptime", UPTIME },
+        { "disk", DISK },
         // { "de", "echo $XDG_CURRENT_DESKTOP" },
         { "wm", "echo $XDG_CURRENT_DESKTOP" },
         { "packages", PACKAGES },
         { "terminal", TERM },
         { "shell", "basename $SHELL" },
-        { "uptime", UPTIME },
         { "cpu", CPU },
         { "gpu", GPU },
         { "model", "cat /sys/class/dmi/id/product_name" },
